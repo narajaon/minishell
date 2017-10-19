@@ -6,21 +6,22 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 11:52:15 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/19 08:08:40 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/10/19 16:49:51 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-t_bool		is_var_type(char *str)
+t_bool			is_var_type(char *str)
 {
 	int		i;
 
 	i = 0;
+	str = (char *)str;
 	return (FALSE);
 }
 
-void		fill_var_struct(char *str, t_local *var)
+void			fill_var_struct(char *str, t_local *var)
 {
 	int		i;
 
@@ -56,4 +57,14 @@ void			init_env(t_sh *sh_env, char **env)
 	sh_env->cmd_env.env_tab = ft_tab_dup(env);
 	sh_env->cmd_env.env_list = ft_tab_to_list(sh_env->cmd_env.env_tab);
 	free_tab_str(&to_free);
+}
+
+void			ft_usage(int ac, char **av)
+{
+	if (ac == 2 && ft_strcmp(av[1], "-c") == 0)
+		ft_dprintf(g_fd_ou, "\e[1;1H\e[2J");
+	else if (ac == 2 && ft_strcmp(av[1], "-i") == 0)
+		ft_dprintf(g_fd_ou, "-c : fullscreen mode\n");
+	else if (ac > 2)
+		ft_printf("my_sh: only one option at a time allowed\n");
 }

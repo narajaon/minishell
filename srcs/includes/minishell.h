@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 12:18:04 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/19 08:08:03 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/10/19 16:00:34 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 # define MINISHELL_H
 # include "sh_structs.h"
 
+pid_t					g_cur_pid;
+volatile t_bool			g_loop;
+
 int						g_errno;
 int						g_cmd_ret;
-pid_t					g_cur_pid;
 
 int						g_fd_ou;
 int						g_fd_in;
 int						g_fd_err;
 
-char					*g_user_input;
+t_sh					*g_env_ptr;
 
 extern const t_shcmd	g_sh_struct[PRC_NB + 1];
 extern const t_sherror	g_sh_error[NB_ERR + 1];
 extern const t_schar	g_spec_char[SCHAR_NB];
 extern const t_sighand	g_sig_msg[NB_SIG + 1];
+
+void					exec_sh(t_sh *sh_env);
 
 int						echo_cmd(t_sh *sh_env, char **env);
 int						cd_cmd(t_sh *sh_env, char **env);
@@ -60,6 +64,7 @@ t_bool					is_env_var(char *str, char *var);
 void					add_var_to_env(char **arg, t_list **env);
 t_bool					setenv_has_args(char *str);
 void					init_env(t_sh *sh_env, char **env);
+void					ft_usage(int ac, char **av);
 
 void					update_path(t_sh *sh_env, char *cur_dir);
 void					remove_from_path(char *path);
@@ -71,6 +76,7 @@ t_bool					is_valid_path(char *path_bin);
 int						exit_error(int error, char *bad_input,
 		char *cmd_name, int ret);
 void					sighandler(int sigval);
+t_bool					jump_loop(void);
 void					sig_intercepter(void);
 void					flush_sh_env(t_sh *env);
 void					update_env_tab(t_sh *sh_env);

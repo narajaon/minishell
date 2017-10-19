@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 11:51:49 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/18 14:06:07 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/10/19 16:18:06 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int			cd_cmd(t_sh *sh_env, char **bin_path)
 	}
 	else
 		cur_dir = get_var_val(&sh_env->cmd_env, "HOME");
-	if (chdir(cur_dir) < 0)
+	if (cur_dir == NULL || chdir(cur_dir) < 0)
 		return (exit_error(WRONG_TYPE, cur_dir, "cd", -1));
 	ft_strcpy(sh_env->prev_dir, sh_env->cur_dir);
 	update_path(sh_env, cur_dir);

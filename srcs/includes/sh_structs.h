@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 12:17:33 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/18 12:17:56 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/10/19 14:31:31 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ typedef struct			s_sh
 	t_local				*lst_local;
 	char				cur_dir[PATH_MAX + 1];
 	char				prev_dir[PATH_MAX + 1];
+	char				*exec_path;
 }						t_sh;
 
 #endif

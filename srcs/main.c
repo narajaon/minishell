@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 10:46:09 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/19 08:08:09 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/10/19 17:01:20 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void			fork_process(int proc_id, int (*cmd)(),
 {
 	int			status;
 
+	status = 0;
 	if (proc_id >= 0)
 	{
 		status = cmd(sh_env, bin_path);
@@ -25,10 +26,10 @@ void			fork_process(int proc_id, int (*cmd)(),
 	if ((g_cur_pid = fork()) == 0)
 	{
 		status = exec_cmd(sh_env, bin_path);
+		flush_sh_env(sh_env);
 		exit(status);
 	}
-	if ((waitpid(g_cur_pid, &status, 0) < 0))
-		exit_error(PID, 0, "my_sh", -1);
+	waitpid(g_cur_pid, &status, 0);
 }
 
 void			exec_sh(t_sh *sh_env)
@@ -40,8 +41,10 @@ void			exec_sh(t_sh *sh_env)
 	cmd = NULL;
 	cur_dir = get_cur_dir(sh_env->cur_dir);
 	ft_strcpy(sh_env->prev_dir, sh_env->cur_dir);
-	while (TRUE)
+	while (1)
 	{
+		if (jump_loop() == TRUE)
+			continue ;
 		sh_env->cmd_env.bin_path = get_env_path(sh_env->cmd_env.env_tab);
 		ft_printf("%s%s%s %C ", KCYN, cur_dir, KNRM, EMJ_ARRW);
 		get_input(g_fd_in, &sh_env->input);
@@ -56,14 +59,6 @@ void			exec_sh(t_sh *sh_env)
 	}
 }
 
-void			ft_usage(int ac, char **av)
-{
-	if (ac == 2 && ft_strcmp(av[1], "-c") == 0)
-		write(g_fd_ou, "\e[1;1H\e[2J", 11);
-	else if (ac == 2 && ft_strcmp(av[1], "-i") == 0)
-		ft_printf("-c : fullscreen mode\n");
-}
-
 int				main(int ac, char **av, char **env)
 {
 	t_sh		sh_env;
@@ -74,15 +69,17 @@ int				main(int ac, char **av, char **env)
 	g_fd_ou = STDO;
 	g_fd_in = STDI;
 	g_fd_err = STDE;
+	g_env_ptr = &sh_env;
 	g_cmd_ret = 0;
+	g_loop = TRUE;
 	sh_env.input.user_in = NULL;
 	sh_env.input.input_lst = NULL;
 	sh_env.cmd_env.env_list = NULL;
 	sh_env.cmd_env.bin_path = NULL;
 	setlocale(LC_ALL, "");
-	sig_intercepter();
 	ft_usage(ac, av);
 	init_env(&sh_env, env);
+	sig_intercepter();
 	exec_sh(&sh_env);
 	free_tab_str(&local_env);
 	return (0);

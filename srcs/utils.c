@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 11:52:24 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/18 13:29:52 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/10/19 10:34:11 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ void		flush_sh_env(t_sh *env)
 {
 	free_tab_str(&env->input.split_in);
 	free_str(&env->input.user_in);
+	free_str(&env->exec_path);
 	free_tab_str(&env->cmd_env.bin_path);
 	ft_lstdel(&env->input.input_lst, &del_list);
 	g_errno = 0;
 	g_cmd_ret = 0;
 	g_cur_pid = 0;
-	g_user_input = NULL;
 }

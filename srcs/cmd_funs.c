@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 11:51:52 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/18 11:51:53 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/10/19 16:24:41 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,6 @@ int			echo_cmd(t_sh *sh_env, char **bin_path)
 
 int			export_cmd(t_sh *sh_env, char **bin_path)
 {
-	int		i;
-	char	**arg;
-
-	i = 0;
-	arg = NULL;
-	bin_path = (char **)bin_path;
-	sh_env->input.split_in = ft_strsplit(&sh_env->input.user_in[6], ' ');
-	sh_env->input.input_lst = ft_tab_to_list(sh_env->input.split_in);
-	while (sh_env->input.split_in[i])
-	{
-		if (export_valid_arg(sh_env->input.split_in[i], &arg) == FALSE)
-		{
-			free_tab_str(&arg);
-			return (exit_error(INVALID_CMD, arg[1], "export", -1));
-		}
-		add_var_to_env(arg, &sh_env->cmd_env.env_list);
-		free_tab_str(&arg);
-		i++;
-	}
 	return (0);
 }
 

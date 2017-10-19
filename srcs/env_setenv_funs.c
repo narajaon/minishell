@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 11:51:55 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/18 11:51:56 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/10/19 18:08:30 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ t_bool		is_valid_setenv_arg(char *str, int *pos)
 	int		i;
 
 	i = 0;
-	while (str[i] == ' ')
+	while (ft_isspace(str[i]))
 		i++;
-	while (str[i] && str[i] != ' ')
+	while (str[i] && ft_isspace(str[i]) == FALSE)
 	{
 		if (ft_isalnum(str[i]) == FALSE && str[i] != '_')
 			return (FALSE);

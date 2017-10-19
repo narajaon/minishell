@@ -7,11 +7,6 @@ LIBFT_LIB = libft.a
 MKFILE = Makefile
 SRC = srcs/*.c
 FLAG = -O2
-#FLAG += -g
-#FLAG += -lncurses
-#FLAG += -fsanitize=address
-#FLAG += -fsanitize=undefined
-#FLAG += -fno-omit-frame-pointer
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
