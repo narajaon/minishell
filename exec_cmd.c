@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 10:48:13 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/19 15:45:15 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/10/19 20:30:26 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ int			exec_cmd(t_sh *sh_env, char **bin_path)
 	{
 		if ((is_binary_file(sh_env->input.split_in[0]) == TRUE) &&
 			(is_valid_path(sh_env->input.split_in[0]) == TRUE))
+		{
 			path = sh_env->input.split_in[0];
+		}
 		else
 			return (exit_error(NOT_A_CMD, sh_env->input.cmd_name, "my_sh", -1));
 	}
-	sh_env->exec_path = path;
 	execve(path, sh_env->input.split_in, sh_env->cmd_env.env_tab);
 	return (0);
 }

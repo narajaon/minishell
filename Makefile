@@ -1,12 +1,13 @@
 NAME = minishell
-HEAD = srcs/includes/minishell.h
-PRINTF_DIR = srcs/ft_printf/
-LIBFT_DIR = srcs/libft/
+HEAD = includes/minishell.h
+PRINTF_DIR = ft_printf/
+LIBFT_DIR = libft/
 PRINTF_LIB = libftprintf.a
 LIBFT_LIB = libft.a
 MKFILE = Makefile
-SRC = srcs/*.c
+SRC = *.c
 FLAG = -O2
+#FLAG += -fsanitize=address
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
