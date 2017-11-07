@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 11:52:20 by narajaon          #+#    #+#             */
-/*   Updated: 2017/11/05 21:42:24 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/11/07 10:35:08 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ int			get_input(int fd, t_in *input)
 	input->input_lst = NULL;
 	tmp_gnl = NULL;
 	if (get_next_line(fd, &tmp_gnl) == -1)
+	{
+		free_str(&tmp_gnl);
 		return (-1);
+	}
 	tmp_to_free = tmp_gnl;
 	while (ft_isspace(*tmp_gnl))
 		tmp_gnl++;
