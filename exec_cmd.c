@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 10:48:13 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/19 20:30:26 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/11/05 22:46:05 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ int			exec_cmd(t_sh *sh_env, char **bin_path)
 	char	*path;
 
 	path = NULL;
+	if (sh_env->input.user_in == NULL)
+	{
+		flush_sh_env(sh_env);
+		return (0);
+	}
 	sh_env->input.split_in = ft_arg_split(sh_env->input.user_in,
 			&sh_env->input.input_lst);
 	if (sh_env->input.split_in[0] == NULL)

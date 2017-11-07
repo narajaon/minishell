@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 11:39:44 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/18 11:56:53 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/11/05 21:39:30 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,11 @@
 # define MAX_CMD_NAME 10
 
 # define SCHAR_NB 11
+
+# define NBR(x) printf(#x "= %d\n", x)
+# define STR(x) printf(#x "= %s\n", x)
+# define CHAR(x) printf(#x "= %c\n", x)
+# define EX exit(1);
+# define ICI printf("ICI\n");
+
 #endif

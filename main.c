@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 10:46:09 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/20 16:06:03 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/11/05 21:41:36 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void			exec_sh(t_sh *sh_env)
 	{
 		if (jump_loop() == TRUE)
 			continue ;
-		sh_env->cmd_env.bin_path = get_env_path(sh_env->cmd_env.env_tab);
-		ft_dprintf(g_fd_ou, "%s%s%s %C ", KCYN, cur_dir, KNRM, EMJ_ARRW);
+		ft_printf("%s%s%s %C ", KCYN, cur_dir, KNRM, EMJ_ARRW);
 		get_input(g_fd_in, &sh_env->input);
+		sh_env->cmd_env.bin_path = get_env_path(sh_env->cmd_env.env_tab);
 		sh_env->proc.proc_id =
 			get_proc_index(sh_env->input.cmd_name, g_sh_struct);
 		if (sh_env->proc.proc_id >= 0)
@@ -73,6 +73,7 @@ int				main(int ac, char **av, char **env)
 	g_cmd_ret = 0;
 	g_loop = TRUE;
 	sh_env.input.user_in = NULL;
+	sh_env.input.cmd_name = NULL;
 	sh_env.input.input_lst = NULL;
 	sh_env.cmd_env.env_list = NULL;
 	sh_env.cmd_env.bin_path = NULL;

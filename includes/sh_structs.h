@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 12:17:33 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/19 14:31:31 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/11/05 17:14:01 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef struct			s_in
 	char				**split_in;
 	t_list				*input_lst;
 	t_list				*history;
-	char				cmd_name[MAX_CMD_NAME];
+	char				*cmd_name;
 }						t_in;
 
 typedef struct			s_prc

@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 12:18:04 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/19 16:00:34 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/11/05 17:16:12 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int						export_cmd(t_sh *sh_env, char **bin_path);
 void					parse_input(t_in *input);
 int						is_esc_char(char *str);
 int						get_proc_index(char *cmd, const t_shcmd *cmd_tab);
-void					get_input(int fd, t_in *input);
-int						get_cmd_name(char *cmd_name, char *user_in);
+int						get_input(int fd, t_in *input);
+int						get_cmd_name(char **cmd_name, char *user_in);
 char					**ft_arg_split(char *str, t_list **list);
 char					*check_bin(char **paths, t_prc *proc, t_in *input);
 void					format_input(char **str);

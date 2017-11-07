@@ -5,7 +5,24 @@ LIBFT_DIR = libft/
 PRINTF_LIB = libftprintf.a
 LIBFT_LIB = libft.a
 MKFILE = Makefile
-SRC = *.c
+SRC = \
+	add_cmd_to_history.c \
+	cd_cmd.c \
+	cmd_funs.c \
+	env_setenv_funs.c \
+	exec_cmd.c \
+	export_funs.c \
+	ft_arg_split.c \
+	ft_tab_to_list.c \
+	get_str_in_quotes.c \
+	global_strucs.c \
+	hash_funct.c \
+	init_local_var.c \
+	main.c \
+	parse_check_bin.c \
+	path_manip.c \
+	signal_handler.c \
+	utils.c
 FLAG = -O2
 #FLAG += -fsanitize=address
 OBJ = $(SRC:.c=.o)
