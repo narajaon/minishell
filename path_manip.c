@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 12:13:38 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/18 12:14:52 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/11/07 11:21:37 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ char		*get_cur_dir(char *cur_dir_buff)
 	char		*tmp;
 	int			len;
 
-	tmp = getcwd(cur_dir_buff, PATH_MAX + 1);
+	if (!(tmp = getcwd(cur_dir_buff, PATH_MAX + 1)))
+		return (NULL);
 	len = ft_strlen(tmp);
 	while (len > 0 && tmp[len] != '/')
 		len--;
