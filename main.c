@@ -6,7 +6,7 @@
 /*   By: narajaon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/18 10:46:09 by narajaon          #+#    #+#             */
-/*   Updated: 2017/10/19 20:30:07 by narajaon         ###   ########.fr       */
+/*   Updated: 2017/10/20 16:06:03 by narajaon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void			exec_sh(t_sh *sh_env)
 		if (jump_loop() == TRUE)
 			continue ;
 		sh_env->cmd_env.bin_path = get_env_path(sh_env->cmd_env.env_tab);
-		ft_printf("%s%s%s %C ", KCYN, cur_dir, KNRM, EMJ_ARRW);
+		ft_dprintf(g_fd_ou, "%s%s%s %C ", KCYN, cur_dir, KNRM, EMJ_ARRW);
 		get_input(g_fd_in, &sh_env->input);
 		sh_env->proc.proc_id =
 			get_proc_index(sh_env->input.cmd_name, g_sh_struct);
