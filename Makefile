@@ -1,51 +1,75 @@
-NAME = minishell
-HEAD = includes/minishell.h
-PRINTF_DIR = ft_printf/
-LIBFT_DIR = libft/
-PRINTF_LIB = libftprintf.a
-LIBFT_LIB = libft.a
-MKFILE = Makefile
-SRC = \
-	add_cmd_to_history.c \
-	cd_cmd.c \
-	cmd_funs.c \
-	env_setenv_funs.c \
-	exec_cmd.c \
-	export_funs.c \
-	ft_arg_split.c \
-	ft_tab_to_list.c \
-	get_str_in_quotes.c \
-	global_strucs.c \
-	hash_funct.c \
-	init_local_var.c \
-	main.c \
-	parse_check_bin.c \
-	path_manip.c \
-	signal_handler.c \
-	utils.c
-FLAG = -O2
-#FLAG += -fsanitize=address
-OBJ = $(SRC:.c=.o)
+NAME:=minishell
+CC:=gcc
+
+RM:=/bin/rm -f
+MKDIR:=mkdir -p
+
+ifeq ($(DEBUG),yes)
+CFLAGS:=-g3 -fsanitize=address
+else
+CFLAGS:= -O2 -Wall -Wextra -Werror
+endif
+INC_D:=inc
+SCR_D:=src
+LIB_D:=lib
+OBJ_D:=obj
+HEAD =$(INC_D)/minishell.h
+
+INCLUDES = -I inc \
+		-I lib/ft_printf/inc \
+		-I lib/libft/inc \
+
+LIBRARIES = -L lib/ft_printf -lftprintf \
+			-L lib/libft -lft \
+			-lcurses
+
+ITEM = \
+	main.o \
+	add_cmd_to_history.o \
+	cd_cmd.o \
+	cmd_funs.o \
+	env_setenv_funs.o \
+	exec_cmd.o \
+	export_funs.o \
+	ft_arg_split.o \
+	ft_tab_to_list.o \
+	get_str_in_quotes.o \
+	global_strucs.o \
+	hash_funct.o \
+	init_local_var.o \
+	parse_check_bin.o \
+	path_manip.o \
+	signal_handler.o \
+	utils.o
+
+
+
+OBJ:=$(addprefix $(OBJ_D)/, $(ITEM))
+
+vpath %.c src
+
+vpath %.h inc lib/libft/inc lib/ft_printf/inc
 
 all: $(NAME)
 
-$(NAME): $(SRC) $(HEAD) $(MKFILE)
-	@make -C $(LIBFT_DIR)/
-	@make -C $(PRINTF_DIR)/
-	@gcc $(SRC) $(FLAG) $(PRINTF_DIR)/$(PRINTF_LIB)\
-		$(LIBFT_DIR)/$(LIBFT_LIB) -o $(NAME)
+$(NAME): $(OBJ) $(HEAD) Makefile
+	@$(MAKE) -C lib/libft
+	@$(MAKE) -C lib/ft_printf
+	@$(CC) $(CFLAGS) -o $(NAME) $(INCLUDES) $(LIBRARIES) $(OBJ)
+
+./${OBJ_D}/%.o: %.c 
+	@$(MKDIR) $(OBJ_D)
+	@$(CC) $(CFLAGS) -c -o $@ $<  $(INCLUDES)
 
 clean:
-	@echo "[shell] Deleting:\033[33m *.o\033[0m"
-	@rm -f $(OBJ)
-	@make -C $(LIBFT_DIR)/ clean
-	@make -C $(PRINTF_DIR)/ clean
+	@$(MAKE) -C lib/ft_printf clean
+	@$(MAKE) -C lib/libft clean
+	@$(RM) -r $(OBJ_D)
 
 fclean: clean
-	@echo "[shell] Deleting:\033[33m $(NAME)\033[0m"
-	@rm -f $(NAME)
-	@make -C $(LIBFT_DIR)/ fclean
-	@make -C $(PRINTF_DIR)/ fclean
+	@$(MAKE) -C lib/ft_printf fclean
+	@$(MAKE) -C lib/libft fclean
+	@$(RM) $(NAME)
 
 re: fclean all
 
