@@ -4,7 +4,7 @@ Minishell is, you guested it, a mini command interpreter. It lacks several stand
 
 ## Getting Started
 
-Start by compiling the project using the command `Make`
+Start by compiling the project using the `Make` command
 
 Then you need to launch the program<br>
 `./minishell`
