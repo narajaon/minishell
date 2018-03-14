@@ -11,7 +11,7 @@ Then you need to launch the program<br>
 
 ## Usage
 
-After launching the program, you will see prompt appearing with the name of your cwd
+After launching the program, you will see a prompt appearing with the name of your cwd
 
 ![alt text](https://github.com/narajaon/minishell/blob/master/readme_pics/prompt.png)
 
