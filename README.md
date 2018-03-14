@@ -22,3 +22,4 @@ Now you can type anything and even launch any command you like !
 It even has it's own set of builtins including `echo` `env` `unsetenv` `cd` `exit`
 
 ![alt text](https://github.com/narajaon/minishell/blob/master/readme_pics/echo.png)
+![alt text](https://github.com/narajaon/minishell/blob/master/readme_pics/cd.png)
