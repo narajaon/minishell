@@ -18,4 +18,7 @@ After launching the program, you will see prompt appearing with the name of your
 Now you can type thing and even launch any command you like !
 
 ![alt text](https://github.com/narajaon/minishell/blob/master/readme_pics/ls_l.png)<br>
+
+It even has it's own set of builtins including `echo` `env` `unsetenv` `cd` `exit`
+
 ![alt text](https://github.com/narajaon/minishell/blob/master/readme_pics/echo.png)
