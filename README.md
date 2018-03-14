@@ -15,7 +15,7 @@ After launching the program, you will see a prompt appearing with the name of yo
 
 ![alt text](https://github.com/narajaon/minishell/blob/master/readme_pics/prompt.png)
 
-Now you can type thing and even launch any command you like !
+Now you can type anything and even launch any command you like !
 
 ![alt text](https://github.com/narajaon/minishell/blob/master/readme_pics/ls_l.png)<br>
 
