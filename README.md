@@ -13,4 +13,4 @@ Then you need to launch the program<br>
 
 After launching the program, you will see prompt appearing
 
-/*![alt text](https://github.com/narajaon/RTv1/blob/master/readme_pics/simple_scene.png)*/
+![alt text](https://github.com/narajaon/minishell/blob/master/readme_pics/prompt.png)
