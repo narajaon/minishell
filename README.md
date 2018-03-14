@@ -11,6 +11,11 @@ Then you need to launch the program<br>
 
 ## Usage
 
-After launching the program, you will see prompt appearing
+After launching the program, you will see prompt appearing with the name of your cwd
 
 ![alt text](https://github.com/narajaon/minishell/blob/master/readme_pics/prompt.png)
+
+Now you can type thing and even launch any command you like !
+
+![alt text](https://github.com/narajaon/minishell/blob/master/readme_pics/ls_l.png)<br>
+![alt text](https://github.com/narajaon/minishell/blob/master/readme_pics/echo.png)
